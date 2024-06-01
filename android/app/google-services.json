@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348089596709",
+    "project_id": "code-test-ajaya",
+    "storage_bucket": "code-test-ajaya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348089596709:android:3662a2ba7470f166f338cc",
+        "android_client_info": {
+          "package_name": "com.example.code_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6amGLUGH_Xugmyh_MaGZvPaNfbeOnI5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
