@@ -88,6 +88,7 @@ class _DashboardPageState extends State<DashboardPage> {
               },
               loaded: (products, loadingMore) {
                 EasyLoading.dismiss();
+
                 return Column(
                   children: [
                     verticalSpacing(space: 20),

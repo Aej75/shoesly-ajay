@@ -1,4 +1,5 @@
 import 'package:code_test/core/export.dart';
+import 'package:code_test/core/widgets/app_horizontal_shimmer_items.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class BrandWidgetSlider extends StatefulWidget {
@@ -49,6 +50,9 @@ class _BrandWidgetSliderState extends State<BrandWidgetSlider> {
                     ),
                   ),
                 ]).padding(vertical: 10);
+              },
+              loading: () {
+                return const AppHorizontalShimemrItems().padding(vertical: 10);
               },
             );
           },

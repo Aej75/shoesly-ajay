@@ -1,8 +1,10 @@
 import 'package:code_test/core/export.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
+import 'package:code_test/core/widgets/app_horizontal_shimmer_items.dart';
 import 'package:code_test/features/dashboard/presentation/widgets/product_tile.dart';
 import 'package:code_test/features/product/data/model/product.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:master_ui_collection/core/widgets/skeleton/master_skeleton.dart';
 import 'package:styled_widget/styled_widget.dart';
 
@@ -36,6 +38,7 @@ class ProductItems extends StatefulWidget {
             )
           ],
         ).height(50),
+        const AppHorizontalShimemrItems(),
         Expanded(
           child: SingleChildScrollView(
             child: GridView.builder(
