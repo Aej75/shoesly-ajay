@@ -13,7 +13,7 @@ class AppOutlinedBox extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(100),
           border: Border.all(width: 1, color: AppColors.borderColor)),
       child: child,
     );

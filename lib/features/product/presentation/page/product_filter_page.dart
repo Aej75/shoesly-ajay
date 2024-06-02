@@ -84,8 +84,12 @@ class _ProductFilterPageState extends State<ProductFilterPage> {
                 children: [
                   Expanded(
                     child: AppOutlinedButton(
-                      child:
-                          Center(child: Text("RESET(${filter.appliedCount})")),
+                      height: 50,
+                      child: Center(
+                          child: Text(
+                        "RESET(${filter.appliedCount})",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      )),
                       onPressed: () {
                         setState(() {
                           filter = ProductFilter(limit: ProductFilter.perPag);
@@ -98,13 +102,14 @@ class _ProductFilterPageState extends State<ProductFilterPage> {
                   ),
                   Expanded(
                     child: AppOutlinedButton(
+                      height: 50,
                       backGroundColor: AppColors.blackColor,
                       child: Center(
                           child: Text(
                         "APPLY",
                         style: Theme.of(context)
                             .textTheme
-                            .bodyMedium
+                            .titleMedium
                             ?.copyWith(color: Colors.white),
                       )),
                       onPressed: () {

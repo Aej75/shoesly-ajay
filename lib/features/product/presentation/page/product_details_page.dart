@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code_test/core/constants/app_colors.dart';
 import 'package:code_test/core/enum/product_color.dart';
+import 'package:code_test/core/routes/app_router.gr.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/widgets/app_card.dart';
 import 'package:code_test/core/widgets/app_netork_image.dart';
@@ -225,14 +227,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   productId: product.id!,
                   totalReview: product.totalReviews,
                 ),
-                verticalSpacing(space: 5),
+                // verticalSpacing(space: 5),
                 SizedBox(
                   width: double.infinity,
                   child: AppOutlinedButton(
+                      height: 50,
                       title: "SEE ALL REVIEWS",
                       onPressed: () {
-                        // context.router
-                        //     .push(ProductReviewListingRoute(product: product));
+                        context.router.push(
+                            ProductReviewListingPageRoute(product: product));
                       }),
                 )
               ],

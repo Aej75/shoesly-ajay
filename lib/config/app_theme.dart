@@ -65,7 +65,7 @@ class AppTheme {
           letterSpacing: -2,
           fontWeight: FontWeight.w300),
       titleLarge: TextStyle(
-          color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+          color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700),
       titleSmall: TextStyle(color: Colors.grey, fontSize: 14),
       titleMedium: TextStyle(
           color: AppColors.blackColor,

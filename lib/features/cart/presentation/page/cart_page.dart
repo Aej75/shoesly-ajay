@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code_test/core/extension/cart_extension.dart';
+import 'package:code_test/core/routes/app_router.gr.dart';
 import 'package:code_test/core/widgets/app_list_view.dart';
 import 'package:code_test/core/widgets/base_view.dart';
 import 'package:code_test/core/widgets/error_view.dart';
@@ -34,7 +36,7 @@ class _CartPageState extends State<CartPage> {
                     title: "Grand Total",
                     subTitle: "\$${carts.total.toStringAsFixed(2)}",
                     onButtonPressed: () {
-                      // context.router.push(OrderSummaryRoute(carts: carts));
+                      context.router.push(OrderSummaryPageRoute(carts: carts));
                     },
                   );
                 }) ??

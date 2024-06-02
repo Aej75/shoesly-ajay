@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part "cart_item.g.dart";
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CartItem {
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? id;

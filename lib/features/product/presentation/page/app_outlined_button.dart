@@ -7,11 +7,13 @@ class AppOutlinedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget? child;
   final Color? backGroundColor;
+  final double? height;
   final String? title;
 
   const AppOutlinedButton(
       {super.key,
       this.backGroundColor,
+      this.height,
       this.child,
       required this.onPressed,
       this.title});
@@ -26,15 +28,18 @@ class AppOutlinedButton extends StatelessWidget {
           foregroundColor: Colors.black,
           elevation: 0),
       onPressed: onPressed,
-      child: AppOutlinedBox(
-        color: backGroundColor,
-        child: title != null
-            ? Center(
-                child: Text(
-                title!,
-                style: Theme.of(context).textTheme.titleMedium,
-              ).textColor(colorBlack))
-            : child ?? const SizedBox(),
+      child: SizedBox(
+        height: height,
+        child: AppOutlinedBox(
+          color: backGroundColor,
+          child: title != null
+              ? Center(
+                  child: Text(
+                  title!,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ).textColor(colorBlack))
+              : child ?? const SizedBox(),
+        ),
       ),
     );
   }

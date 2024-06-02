@@ -1,6 +1,7 @@
 import 'package:code_test/core/enum/product_gender.dart';
 import 'package:code_test/core/export.dart';
 import 'package:code_test/core/widgets/app_outline_box.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class ProductGenderFilterView extends StatelessWidget {
   final Gender? gender;
@@ -17,20 +18,21 @@ class ProductGenderFilterView extends StatelessWidget {
       children: [
         Text(
           "Gender",
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(
-          height: 8,
+          height: 20,
         ),
         SizedBox(
           height: 40,
           width: MediaQuery.of(context).size.width,
           child: ListView(
+            clipBehavior: Clip.none,
             scrollDirection: Axis.horizontal,
             children: Gender.values.map((e) {
               final selected = gender == e;
               return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 12),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -50,13 +52,13 @@ class ProductGenderFilterView extends StatelessWidget {
                             .textTheme
                             .bodyMedium
                             ?.copyWith(color: selected ? Colors.white : null),
-                      ))),
+                      ).padding(horizontal: 8))),
                 ),
               );
             }).toList(),
           ),
         ),
       ],
-    );
+    ).padding(vertical: 10);
   }
 }

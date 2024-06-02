@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:code_test/core/constants/app_colors.dart';
+import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/features/brand/data/model/brand.dart';
 import 'package:flutter/material.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -49,8 +50,8 @@ class SingleBrandView extends StatelessWidget {
         Stack(
           children: [
             Container(
-              height: 40,
-              width: 40,
+              height: 45,
+              width: 45,
               decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   shape: BoxShape.circle,
@@ -87,6 +88,7 @@ class SingleBrandView extends StatelessWidget {
               )
           ],
         ),
+        verticalSpacing(space: 5),
         Text(
           brand.name,
           style: Theme.of(context).textTheme.titleMedium,

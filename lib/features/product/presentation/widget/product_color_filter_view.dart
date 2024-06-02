@@ -2,6 +2,7 @@ import 'package:code_test/core/constants/app_colors.dart';
 import 'package:code_test/core/enum/product_color.dart';
 import 'package:code_test/core/widgets/app_outline_box.dart';
 import 'package:flutter/material.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class ProductColorFilterView extends StatelessWidget {
   final ProductColor? color;
@@ -19,17 +20,18 @@ class ProductColorFilterView extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(
-          height: 8,
+          height: 20,
         ),
         SizedBox(
           height: 40,
           width: MediaQuery.of(context).size.width,
           child: ListView(
+            clipBehavior: Clip.none,
             scrollDirection: Axis.horizontal,
             children: ProductColor.values.map((e) {
               final selected = color == e;
               return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 12),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -72,6 +74,6 @@ class ProductColorFilterView extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ).padding(vertical: 10);
   }
 }

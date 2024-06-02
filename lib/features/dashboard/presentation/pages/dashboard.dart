@@ -10,6 +10,7 @@ import 'package:code_test/features/product/data/model/product.dart';
 import 'package:code_test/features/product/data/model/product_filter.dart';
 import 'package:code_test/features/product/presentation/bloc/product_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class DashboardPage extends StatefulWidget {
   List<Product> fetchedProducts = [];
@@ -62,7 +63,10 @@ class _DashboardPageState extends State<DashboardPage> {
           builder: (context, state) {
             return state.maybeWhen(
               orElse: () {
-                return const SizedBox();
+                return Text(
+                  'Something went wrong!',
+                  style: Theme.of(context).textTheme.titleMedium,
+                );
               },
               loading: () {
                 EasyLoading.show();
@@ -108,14 +112,23 @@ class _DashboardPageState extends State<DashboardPage> {
                         }
                       },
                     ),
-                    ProductItems(
-                      currentList: widget.currentList,
-                      onScrollEnd: () {
-                        filter.limit += ProductFilter.perPag;
-                        loadProducts();
-                      },
-                    )
-                    // verticalSpacing(space: 60),
+                    widget.currentList.isEmpty
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'No any products found!',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ],
+                          ).height(MediaQuery.sizeOf(context).height / 1.5)
+                        : ProductItems(
+                            currentList: widget.currentList,
+                            onScrollEnd: () {
+                              filter.limit += ProductFilter.perPag;
+                              loadProducts();
+                            },
+                          )
                   ],
                 );
               },

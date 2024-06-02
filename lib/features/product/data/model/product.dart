@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_test/core/enum/product_color.dart';
 import 'package:code_test/core/enum/product_gender.dart';
-import 'package:code_test/features/brand/data/model/brand.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part "product.g.dart";
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Product {
   @JsonKey(includeToJson: true)
   String? id;

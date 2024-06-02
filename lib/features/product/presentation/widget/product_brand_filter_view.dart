@@ -6,6 +6,7 @@ import 'package:code_test/features/brand/presentation/bloc/brand_bloc.dart';
 import 'package:code_test/features/brand/presentation/widget/single_brand_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class ProductBrandFilterView extends StatefulWidget {
   final void Function(Brand? brand) onSelected;
@@ -25,9 +26,9 @@ class _ProductBrandFilterViewState extends State<ProductBrandFilterView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Brands",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(
           height: 08,
@@ -35,7 +36,7 @@ class _ProductBrandFilterViewState extends State<ProductBrandFilterView> {
         BlocProvider(
           create: (context) => brandBloc..add(const BrandEvent.getBrands()),
           child: SizedBox(
-            height: 100,
+            height: 110,
             child:
                 BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
               return state.when(
@@ -57,7 +58,7 @@ class _ProductBrandFilterViewState extends State<ProductBrandFilterView> {
                               widget.onSelected(brand);
                             });
                           },
-                        );
+                        ).padding(right: 5);
                       },
                     );
                   });
@@ -65,6 +66,6 @@ class _ProductBrandFilterViewState extends State<ProductBrandFilterView> {
           ),
         ),
       ],
-    );
+    ).padding(vertical: 10);
   }
 }

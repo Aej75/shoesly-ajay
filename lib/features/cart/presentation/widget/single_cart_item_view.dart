@@ -1,13 +1,12 @@
-import 'package:code_test/core/constants/app_colors.dart';
+import 'package:code_test/core/export.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/widgets/app_card.dart';
 import 'package:code_test/core/widgets/app_netork_image.dart';
 import 'package:code_test/core/widgets/colum_with_padding.dart';
 import 'package:code_test/features/cart/data/model/cart_item.dart';
 import 'package:code_test/features/cart/presentation/widget/cart_quantity_button.dart';
-import 'package:code_test/gen/assets.gen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class SingleCartItemView extends StatelessWidget {
   final CartItem cartItem;
@@ -23,31 +22,32 @@ class SingleCartItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      direction: DismissDirection.endToStart,
+    return Slidable(
       key: ObjectKey(cartItem.id),
-      onDismissed: (details) {
-        onDelete();
-      },
-      background: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.waringColor),
-        child: Row(
-          children: [
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 30.0),
-              child: SvgPicture.asset(
-                Assets.icons.trash,
-                height: 20,
-                width: 20,
-                // ignore: deprecated_member_use
-                color: Colors.white,
+      endActionPane: ActionPane(
+        extentRatio: 0.3,
+        motion: const ScrollMotion(),
+        children: [
+          Expanded(
+            child: InkWell(
+              onTap: onDelete,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    bottomLeft: Radius.circular(12)),
+                child: Container(
+                  height: 100,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  color: AppColors.waringColor,
+                  child: const Icon(
+                    CupertinoIcons.delete,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

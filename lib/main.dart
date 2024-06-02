@@ -33,7 +33,7 @@ void main() async {
 
   runApp(
     BlocProvider(
-      create: (context) => getIt<CartBloc>(),
+      create: (context) => getIt<CartBloc>()..add(const CartEvent.getCart()),
       child: MyApp(),
     ),
   );

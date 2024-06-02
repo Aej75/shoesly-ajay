@@ -16,7 +16,7 @@ CartItem _$CartItemFromJson(Map<String, dynamic> json) => CartItem(
     );
 
 Map<String, dynamic> _$CartItemToJson(CartItem instance) => <String, dynamic>{
-      'product': instance.product,
+      'product': instance.product.toJson(),
       'size': instance.size,
       'productColor': _$ProductColorEnumMap[instance.productColor],
       'userId': instance.userId,
