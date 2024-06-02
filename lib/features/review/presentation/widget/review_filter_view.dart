@@ -1,6 +1,6 @@
 import 'package:code_test/core/enum/review_score_filter.dart';
+import 'package:code_test/core/export.dart';
 import 'package:code_test/core/type/on_changed.dart';
-import 'package:flutter/material.dart';
 
 class ReviewFilterView extends StatelessWidget {
   final OnValueChanged<ReviewScoreFilter> filter;
@@ -16,6 +16,9 @@ class ReviewFilterView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: ReviewScoreFilter.values
             .map((e) => TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: AppColors.blackColor,
+                ),
                 onPressed: () {
                   filter(e);
                 },

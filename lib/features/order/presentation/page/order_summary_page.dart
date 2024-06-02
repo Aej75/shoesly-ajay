@@ -3,6 +3,7 @@ import 'package:code_test/core/export.dart';
 import 'package:code_test/core/extension/cart_extension.dart';
 import 'package:code_test/core/routes/app_router.gr.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
+import 'package:code_test/core/utils/notification/notification_service.dart';
 import 'package:code_test/core/widgets/base_view.dart';
 import 'package:code_test/core/widgets/colum_with_padding.dart';
 import 'package:code_test/features/cart/data/model/cart_item.dart';
@@ -37,8 +38,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
               loading: () {
                 EasyLoading.show(status: "Placing your order");
               },
-              success: () {
-                EasyLoading.showSuccess("Your order has been placed");
+              success: () async {
+                await PushNotificationService.showLocalNotification(
+                    message: 'Your order has been placed successfully!');
 
                 Future.delayed(const Duration(seconds: 1), () {
                   context.read<CartBloc>().add(const CartEvent.getCart());

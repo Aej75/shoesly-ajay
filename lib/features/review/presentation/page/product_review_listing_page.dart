@@ -1,6 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:code_test/core/enum/review_score_filter.dart';
 import 'package:code_test/core/injection/injection.dart';
+import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/widgets/app_list_view.dart';
 import 'package:code_test/core/widgets/base_view.dart';
 import 'package:code_test/core/widgets/error_view.dart';
@@ -44,6 +44,8 @@ class _ProductReviewListingPageState extends State<ProductReviewListingPage> {
     final product = widget.product;
     return BaseView(
         titleText: "Reviews(${product.totalReviews})",
+        centerTitle: true,
+        titleStyle: Theme.of(context).textTheme.headlineMedium,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
@@ -65,6 +67,7 @@ class _ProductReviewListingPageState extends State<ProductReviewListingPage> {
                   loadReviews();
                 },
               ),
+              verticalSpacing(space: 20),
               Expanded(child: BlocBuilder<ReviewBloc, ReviewState>(
                   builder: (context, state) {
                 return state.when(

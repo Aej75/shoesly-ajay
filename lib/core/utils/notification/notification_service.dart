@@ -109,7 +109,7 @@ class PushNotificationService {
         importance: Importance.max,
       );
 
-  static Future<void> showLocalNotification() async {
+  static Future<void> showLocalNotification({required String message}) async {
     if (await flutterLocalNotificationsPlugin
             .resolvePlatformSpecificImplementation<
                 AndroidFlutterLocalNotificationsPlugin>()
@@ -130,8 +130,8 @@ class PushNotificationService {
 
     await flutterLocalNotificationsPlugin.show(
       0,
-      'Test Title',
-      'This is the body of the notification',
+      'Code Test Shoesly',
+      message,
       generalNotificationDetails,
       payload: 'Test Payload',
     );

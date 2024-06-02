@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_test/core/export.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/utils/notification/notification_service.dart';
-import 'package:code_test/core/widgets/app_button.dart';
 import 'package:code_test/core/widgets/base_view.dart';
 import 'package:code_test/features/dashboard/presentation/widgets/brand_widget_slider.dart';
 import 'package:code_test/features/dashboard/presentation/widgets/cart_icon_button.dart';
@@ -81,8 +80,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 );
               },
               loading: () {
-                EasyLoading.show();
-                return const SizedBox();
+                return ProductItems.shimmer(context);
               },
               error: (message) {
                 EasyLoading.showError(message);
@@ -105,11 +103,6 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                         CartIconButton(),
                       ],
-                    ),
-                    AppButton(
-                      buttonText: 'Notify',
-                      onPressed: () async =>
-                          await PushNotificationService.showLocalNotification(),
                     ),
                     BrandWidgetSlider(
                       selectedBrand: selectedBrand,
@@ -140,6 +133,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             ],
                           ).height(MediaQuery.sizeOf(context).height / 1.5)
                         : ProductItems(
+                            isShimmer: true,
                             currentList: widget.currentList,
                             onScrollEnd: () {
                               filter.limit += ProductFilter.perPag;

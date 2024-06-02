@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_test/core/constants/firestore_collection.dart';
+import 'package:code_test/core/export.dart';
 import 'package:code_test/core/routes/app_router.gr.dart';
 import 'package:code_test/core/utils/firebase_config/firebase_config.dart';
 import 'package:code_test/core/widgets/app_card.dart';
 import 'package:code_test/core/widgets/app_netork_image.dart';
-import 'package:code_test/features/brand/data/model/brand.dart';
 import 'package:code_test/features/product/data/model/product.dart';
-import 'package:flutter/material.dart';
+import 'package:master_ui_collection/core/widgets/skeleton/master_skeleton.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class ProductTile extends StatefulWidget {
@@ -20,6 +20,40 @@ class ProductTile extends StatefulWidget {
 
   @override
   State<ProductTile> createState() => _ProductTileState();
+
+  static Widget shimmer(context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: MasterSkeleton(
+            width: MediaQuery.sizeOf(context).width,
+          ),
+        )),
+        const MasterSkeleton(
+          width: 100,
+        ),
+        const SizedBox(height: 4.0),
+        MasterSkeleton(width: MediaQuery.sizeOf(context).width / 3),
+        const SizedBox(height: 4.0),
+        Row(
+          children: [
+            const MasterSkeleton(
+              width: 20,
+            ),
+            const SizedBox(width: 4.0),
+            MasterSkeleton(width: MediaQuery.sizeOf(context).width / 20),
+            const SizedBox(width: 4.0),
+            MasterSkeleton(width: MediaQuery.sizeOf(context).width / 4),
+          ],
+        ),
+        const SizedBox(height: 8.0),
+        MasterSkeleton(width: MediaQuery.sizeOf(context).width / 4),
+      ],
+    );
+  }
 }
 
 class _ProductTileState extends State<ProductTile> {
