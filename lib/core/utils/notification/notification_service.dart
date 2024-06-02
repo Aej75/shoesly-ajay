@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class PushNotificationService {
-  final BuildContext context;
+  final BuildContext? context;
+  static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
-  PushNotificationService({required this.context});
+  PushNotificationService({this.context});
   Future<void> setupInteractedMessage() async {
     final initialMessage = await FirebaseMessaging.instance.getInitialMessage();
 
@@ -106,4 +108,32 @@ class PushNotificationService {
         'High Importance Notifications', // title
         importance: Importance.max,
       );
+
+  static Future<void> showLocalNotification() async {
+    if (await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin>()
+            ?.requestNotificationsPermission() ==
+        false) {
+      return;
+    }
+    const androidDetails = AndroidNotificationDetails(
+      'your_channel_id',
+      'your_channel_name',
+      importance: Importance.max,
+      priority: Priority.high,
+      playSound: true,
+    );
+    const generalNotificationDetails = NotificationDetails(
+      android: androidDetails,
+    );
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Test Title',
+      'This is the body of the notification',
+      generalNotificationDetails,
+      payload: 'Test Payload',
+    );
+  }
 }
