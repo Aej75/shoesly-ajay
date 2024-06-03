@@ -57,7 +57,8 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
             titleStyle: Theme.of(context).textTheme.headlineMedium,
             bottomNavigationBar: PriceTotalAndActionButtonView(
               title: "Grand Total",
-              subTitle: "\$${widget.carts.total.toStringAsFixed(2)}",
+              subTitle:
+                  "\$${(widget.carts.total + shippingFee).toStringAsFixed(2)}",
               buttonText: "PAYMENT",
               onButtonPressed: () async {
                 _orderBloc.add(

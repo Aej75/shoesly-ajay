@@ -21,6 +21,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/img.png
   AssetGenImage get img => const AssetGenImage('assets/icons/img.png');
 
+  /// File path: assets/icons/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
+
   /// File path: assets/icons/star.svg
   String get star => 'assets/icons/star.svg';
 
@@ -28,7 +31,7 @@ class $AssetsIconsGen {
   String get trash => 'assets/icons/trash.svg';
 
   /// List of all assets
-  List<dynamic> get values => [cart, filter, img, star, trash];
+  List<dynamic> get values => [cart, filter, img, logo, star, trash];
 }
 
 class Assets {

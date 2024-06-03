@@ -44,7 +44,7 @@ Follow these steps to set up and run the project on your local machine:
 
 ## Assumptions Made During Development
 
-1. **Brand Images:** All brand images are in SVG format.
+1. **Brand Images:** All brand images are in PNG format.
 2. **User Authentication:** Firebase Anonymous Sign-In is used for managing user authentication.
 3. **Product Gender:** Products are designed for a specific gender or as unisex.
 4. **Color Options:** Products have multiple color options available.
@@ -55,27 +55,25 @@ Follow these steps to set up and run the project on your local machine:
 
 ## Challenges Faced and Solutions
 
-1. **Filter Feature:**
-    - **Challenge:** Managing multiple filter combinations in Firestore.
-    - **Solution:** Used default values for unselected filters to create a single composite index.
-
-2. **Color Filter for Images:**
+1. **Color Filter for Images:**
     - **Challenge:** Handling different color representations and formats.
-    - **Solution:** Implemented a custom image filter with the `ImageFilter` widget. Some issues with white backgrounds remain unresolved.
+    - **Solution:** Implemented a custom image filter with the `ColorFiltered` widget.
 
-3. **Firebase Configuration:**
+2. **Firebase Configuration:**
     - **Challenge:** Configuring Firebase for both Android and iOS.
     - **Solution:** Used the FlutterFire CLI for consistent setup across platforms.
 
-4. **Cross-Platform Consistency:**
-    - **Challenge:** Ensuring seamless functionality on both iOS and Android.
-    - **Solution:** Regular testing on both platforms and minimal use of platform-specific code.
+3. **Firebase Database dummy data:**
+    - **Challenge:** Hassle to add data in firebase.
+    - **Solution:** Used custom service to populate data in database.
+
 
 ## Additional Features and Improvements
 
 1. **State Management:** Implemented using Flutter Bloc for better scalability and maintainability.
-2. **UI/UX Enhancements:** Improved user interface with custom widgets and animations.
-3. **Database Seeder:** Added a service to seed products and reviews into the database.
+2. **UI/UX Enhancements:** Improved user interface with custom widgets and shimmers and splash screen.
+3. **Database Seeder:** Added a service to populate data for  products, brands and reviews into the database.
+3. **Local Notification:** Added a local notification service to notify user on the succesful order placement.
 
 ---
 

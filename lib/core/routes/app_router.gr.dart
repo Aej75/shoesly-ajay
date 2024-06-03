@@ -16,10 +16,10 @@ import 'package:flutter/material.dart' as _i9;
 
 import '../../features/cart/data/model/cart_item.dart' as _i12;
 import '../../features/cart/presentation/page/cart_page.dart' as _i5;
-import '../../features/product/presentation/page/dashboard.dart' as _i1;
 import '../../features/order/presentation/page/order_summary_page.dart' as _i7;
 import '../../features/product/data/model/product.dart' as _i11;
 import '../../features/product/data/model/product_filter.dart' as _i10;
+import '../../features/product/presentation/page/dashboard.dart' as _i1;
 import '../../features/product/presentation/page/product_details_page.dart'
     as _i4;
 import '../../features/product/presentation/page/product_filter_page.dart'

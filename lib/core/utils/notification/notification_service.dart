@@ -75,7 +75,7 @@ class PushNotificationService {
 
     FirebaseMessaging.onMessage.listen((message) {
       final notification = message.notification;
-      final android = message.notification!.android;
+      final android = message.notification?.android;
 
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
@@ -127,12 +127,11 @@ class PushNotificationService {
       return;
     }
     const androidDetails = AndroidNotificationDetails(
-      'your_channel_id',
-      'your_channel_name',
-      importance: Importance.max,
-      priority: Priority.high,
-      playSound: true,
-    );
+        'your_channel_id', 'your_channel_name',
+        importance: Importance.max,
+        priority: Priority.high,
+        playSound: true,
+        visibility: NotificationVisibility.public);
     const generalNotificationDetails = NotificationDetails(
       android: androidDetails,
     );
