@@ -15,4 +15,6 @@ class AppKeys {
   static const apiKey = 'AIzaSyCPdgIb_VGXcD1Pdw1EFSBGRJIAb1RuJzs';
   static const imageBaseUrl = 'https://pet.fly.dev/';
   static const historyPrefs = 'searchHistory';
+  static const stripePublishKey =
+      'pk_test_51PNHKx076BkCSBsptfh9yqGKHFNAxwNLFtcXBcRZbFihoVNTTGe9zViHveoluIFx9EsS3MvFzkOFGCWqDG6o1zBK00dTKJlDM8';
 }

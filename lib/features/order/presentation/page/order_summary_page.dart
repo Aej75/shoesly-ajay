@@ -27,6 +27,7 @@ class OrderSummaryPage extends StatefulWidget {
 class _OrderSummaryPageState extends State<OrderSummaryPage> {
   final OrderBloc _orderBloc = getIt<OrderBloc>();
   final double shippingFee = 20;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -58,17 +59,19 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
               title: "Grand Total",
               subTitle: "\$${widget.carts.total.toStringAsFixed(2)}",
               buttonText: "PAYMENT",
-              onButtonPressed: () {
-                _orderBloc.add(OrderEvent.addOrder(
-                    order: AddOrderRequest(
-                  items: widget.carts,
-                  subTotal: widget.carts.total,
-                  shippingFee: shippingFee,
-                  shippingAddress:
-                      ShippingAddress(address: "Banepa-13, Kavre, Nepal"),
-                  total: widget.carts.total + shippingFee,
-                  paymentMethod: PaymentMethod.cash,
-                )));
+              onButtonPressed: () async {
+                _orderBloc.add(
+                  OrderEvent.addOrder(
+                      order: AddOrderRequest(
+                    items: widget.carts,
+                    subTotal: widget.carts.total,
+                    shippingFee: shippingFee,
+                    shippingAddress:
+                        ShippingAddress(address: "Banepa-13, Kavre, Nepal"),
+                    total: widget.carts.total + shippingFee,
+                    paymentMethod: PaymentMethod.cash,
+                  )),
+                );
               },
             ),
             body: SingleChildScrollView(

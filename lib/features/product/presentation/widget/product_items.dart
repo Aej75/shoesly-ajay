@@ -1,7 +1,7 @@
 import 'package:code_test/core/export.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/widgets/app_horizontal_shimmer_items.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/product_tile.dart';
+import 'package:code_test/features/product/presentation/widget/product_tile.dart';
 import 'package:code_test/features/product/data/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

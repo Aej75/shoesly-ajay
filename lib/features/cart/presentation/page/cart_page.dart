@@ -45,11 +45,12 @@ class _CartPageState extends State<CartPage> {
         ),
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
-            return state.when(
-                cartInitial: loadingView,
-                loading: loadingView,
-                addToCartSuccess: loadingView,
-                addToCartState: loadingView,
+            return state.maybeWhen(
+                orElse: () => const SizedBox(),
+                cartInitial: loadingListView,
+                loading: loadingListView,
+                addToCartSuccess: loadingListView,
+                addToCartState: loadingListView,
                 failure: errorView,
                 getCartSuccess: (carts) {
                   return AppListView(
@@ -57,6 +58,8 @@ class _CartPageState extends State<CartPage> {
                     noDatatext: "Cart is empty",
                     itemBuilder: (context, index) {
                       final cart = carts[index];
+
+                      // return SingleCartItemView.shimmer(context);
                       return SingleCartItemView(
                         cartItem: cart,
                         onDelete: () {

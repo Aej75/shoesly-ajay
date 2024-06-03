@@ -29,7 +29,7 @@ class DataPopulation {
 
   DataPopulation(this.brandRepository, this.db, this.productRepository);
 
-  Future<void> seed() async {
+  Future<void> populate() async {
     // await populateBrand();
     // await populateProduct();
     // await populateReviewData();

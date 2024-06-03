@@ -23,6 +23,15 @@ class PushNotificationService {
     await registerNotificationListeners();
   }
 
+  static Future<bool?> requestPermission() async {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    return await (flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestNotificationsPermission());
+  }
+
   Future<void> registerNotificationListeners() async {
     final channel = androidNotificationChannel();
 

@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code_test/core/constants/app_colors.dart';
+import 'package:code_test/core/routes/app_router.gr.dart';
 import 'package:code_test/core/widgets/app_svg.dart';
 import 'package:code_test/core/widgets/dot_indicator.dart';
 import 'package:code_test/features/product/data/model/product_filter.dart';
@@ -8,20 +10,22 @@ import 'package:flutter/material.dart';
 class FilterButton extends StatelessWidget {
   final ProductFilter appliedFilter;
   final void Function(ProductFilter filter) onFilterChanged;
-  const FilterButton(
-      {super.key, required this.appliedFilter, required this.onFilterChanged});
+  const FilterButton({
+    super.key,
+    required this.appliedFilter,
+    required this.onFilterChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(padding: EdgeInsets.zero),
-      onPressed: () async {
-        // final filter = await context.router.push(ProductFilterRoute(
-        //   filter: appliedFilter,
-        // ));
-        // if (filter is ProductFilter) {
-        //   onFilterChanged(filter);
-        // }
+    return InkWell(
+      onTap: () async {
+        final filter = await context.router.push(ProductFilterPageRoute(
+          filter: appliedFilter,
+        ));
+        if (filter is ProductFilter) {
+          onFilterChanged(filter);
+        }
       },
       child: Container(
         height: 50,

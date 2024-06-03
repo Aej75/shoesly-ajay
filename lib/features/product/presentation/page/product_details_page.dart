@@ -12,7 +12,7 @@ import 'package:code_test/features/cart/data/model/add_to_cart_request_model.dar
 import 'package:code_test/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:code_test/features/cart/presentation/widget/add_to_cart_bottom_sheet_view.dart';
 import 'package:code_test/features/cart/presentation/widget/add_to_cart_success_bottom_sheet_view.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/cart_icon_button.dart';
+import 'package:code_test/features/product/presentation/widget/cart_icon_button.dart';
 import 'package:code_test/features/product/data/model/product.dart';
 import 'package:code_test/features/product/presentation/page/app_outlined_button.dart';
 import 'package:code_test/features/product/presentation/widget/product_color_picker.dart';

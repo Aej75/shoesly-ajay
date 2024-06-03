@@ -3,13 +3,14 @@ import 'package:code_test/core/export.dart';
 import 'package:code_test/core/utils/miscellaneous/spacing_utils.dart';
 import 'package:code_test/core/utils/notification/notification_service.dart';
 import 'package:code_test/core/widgets/base_view.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/brand_widget_slider.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/cart_icon_button.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/filter_button.dart';
-import 'package:code_test/features/dashboard/presentation/widgets/product_items.dart';
+import 'package:code_test/core/widgets/no_date_view.dart';
 import 'package:code_test/features/product/data/model/product.dart';
 import 'package:code_test/features/product/data/model/product_filter.dart';
 import 'package:code_test/features/product/presentation/bloc/product_bloc.dart';
+import 'package:code_test/features/product/presentation/widget/brand_widget_slider.dart';
+import 'package:code_test/features/product/presentation/widget/cart_icon_button.dart';
+import 'package:code_test/features/product/presentation/widget/filter_button.dart';
+import 'package:code_test/features/product/presentation/widget/product_items.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:styled_widget/styled_widget.dart';
 
@@ -35,7 +36,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Future<void> initilizeNotification() async {
-    await PushNotificationService(context: context).setupInteractedMessage();
+    await PushNotificationService.requestPermission();
   }
 
   @override
@@ -54,6 +55,8 @@ class _DashboardPageState extends State<DashboardPage> {
           appliedFilter: filter,
           onFilterChanged: (filter) {
             this.filter = filter;
+
+            selectedBrand = filter.brand;
             setState(() {});
             loadProducts();
           },
@@ -124,15 +127,9 @@ class _DashboardPageState extends State<DashboardPage> {
                       },
                     ),
                     widget.currentList.isEmpty
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'No any products found!',
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                            ],
-                          ).height(MediaQuery.sizeOf(context).height / 1.5)
+                        ? const NoDataView()
+                            .center()
+                            .height(MediaQuery.sizeOf(context).height / 1.5)
                         : ProductItems(
                             isShimmer: true,
                             currentList: widget.currentList,

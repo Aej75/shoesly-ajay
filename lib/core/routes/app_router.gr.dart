@@ -11,42 +11,50 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
-import '../../features/cart/data/model/cart_item.dart' as _i11;
-import '../../features/cart/presentation/page/cart_page.dart' as _i4;
-import '../../features/dashboard/presentation/pages/dashboard.dart' as _i1;
-import '../../features/order/presentation/page/order_summary_page.dart' as _i6;
-import '../../features/product/data/model/product.dart' as _i10;
-import '../../features/product/data/model/product_filter.dart' as _i9;
+import '../../features/cart/data/model/cart_item.dart' as _i12;
+import '../../features/cart/presentation/page/cart_page.dart' as _i5;
+import '../../features/product/presentation/page/dashboard.dart' as _i1;
+import '../../features/order/presentation/page/order_summary_page.dart' as _i7;
+import '../../features/product/data/model/product.dart' as _i11;
+import '../../features/product/data/model/product_filter.dart' as _i10;
 import '../../features/product/presentation/page/product_details_page.dart'
-    as _i3;
+    as _i4;
 import '../../features/product/presentation/page/product_filter_page.dart'
-    as _i2;
+    as _i3;
 import '../../features/review/presentation/page/product_review_listing_page.dart'
-    as _i5;
+    as _i6;
+import '../../features/splash/splash.dart' as _i2;
 
-class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
     DashboardPageRoute.name: (routeData) {
       final args = routeData.argsAs<DashboardPageRouteArgs>(
           orElse: () => const DashboardPageRouteArgs());
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i1.DashboardPage(key: args.key),
         opaque: true,
       );
     },
+    SplashScreenRoute.name: (routeData) {
+      return _i8.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.SplashScreen(),
+        opaque: true,
+      );
+    },
     ProductFilterPageRoute.name: (routeData) {
       final args = routeData.argsAs<ProductFilterPageRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i2.ProductFilterPage(
+        child: _i3.ProductFilterPage(
           key: args.key,
           filter: args.filter,
         ),
@@ -55,9 +63,9 @@ class AppRouter extends _i7.RootStackRouter {
     },
     ProductDetailsPageRoute.name: (routeData) {
       final args = routeData.argsAs<ProductDetailsPageRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i3.ProductDetailsPage(
+        child: _i4.ProductDetailsPage(
           key: args.key,
           product: args.product,
         ),
@@ -65,17 +73,17 @@ class AppRouter extends _i7.RootStackRouter {
       );
     },
     CartPageRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i4.CartPage(),
+        child: const _i5.CartPage(),
         opaque: true,
       );
     },
     ProductReviewListingPageRoute.name: (routeData) {
       final args = routeData.argsAs<ProductReviewListingPageRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i5.ProductReviewListingPage(
+        child: _i6.ProductReviewListingPage(
           key: args.key,
           product: args.product,
         ),
@@ -84,9 +92,9 @@ class AppRouter extends _i7.RootStackRouter {
     },
     OrderSummaryPageRoute.name: (routeData) {
       final args = routeData.argsAs<OrderSummaryPageRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i6.OrderSummaryPage(
+        child: _i7.OrderSummaryPage(
           key: args.key,
           carts: args.carts,
         ),
@@ -96,28 +104,32 @@ class AppRouter extends _i7.RootStackRouter {
   };
 
   @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
           DashboardPageRoute.name,
+          path: '/dashboard-page',
+        ),
+        _i8.RouteConfig(
+          SplashScreenRoute.name,
           path: '/',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           ProductFilterPageRoute.name,
           path: '/product-filter-page',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           ProductDetailsPageRoute.name,
           path: '/product-details-page',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           CartPageRoute.name,
           path: '/cart-page',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           ProductReviewListingPageRoute.name,
           path: '/product-review-listing-page',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           OrderSummaryPageRoute.name,
           path: '/order-summary-page',
         ),
@@ -126,11 +138,11 @@ class AppRouter extends _i7.RootStackRouter {
 
 /// generated route for
 /// [_i1.DashboardPage]
-class DashboardPageRoute extends _i7.PageRouteInfo<DashboardPageRouteArgs> {
-  DashboardPageRoute({_i8.Key? key})
+class DashboardPageRoute extends _i8.PageRouteInfo<DashboardPageRouteArgs> {
+  DashboardPageRoute({_i9.Key? key})
       : super(
           DashboardPageRoute.name,
-          path: '/',
+          path: '/dashboard-page',
           args: DashboardPageRouteArgs(key: key),
         );
 
@@ -140,7 +152,7 @@ class DashboardPageRoute extends _i7.PageRouteInfo<DashboardPageRouteArgs> {
 class DashboardPageRouteArgs {
   const DashboardPageRouteArgs({this.key});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -149,12 +161,24 @@ class DashboardPageRouteArgs {
 }
 
 /// generated route for
-/// [_i2.ProductFilterPage]
+/// [_i2.SplashScreen]
+class SplashScreenRoute extends _i8.PageRouteInfo<void> {
+  const SplashScreenRoute()
+      : super(
+          SplashScreenRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'SplashScreenRoute';
+}
+
+/// generated route for
+/// [_i3.ProductFilterPage]
 class ProductFilterPageRoute
-    extends _i7.PageRouteInfo<ProductFilterPageRouteArgs> {
+    extends _i8.PageRouteInfo<ProductFilterPageRouteArgs> {
   ProductFilterPageRoute({
-    _i8.Key? key,
-    required _i9.ProductFilter? filter,
+    _i9.Key? key,
+    required _i10.ProductFilter? filter,
   }) : super(
           ProductFilterPageRoute.name,
           path: '/product-filter-page',
@@ -173,9 +197,9 @@ class ProductFilterPageRouteArgs {
     required this.filter,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.ProductFilter? filter;
+  final _i10.ProductFilter? filter;
 
   @override
   String toString() {
@@ -184,12 +208,12 @@ class ProductFilterPageRouteArgs {
 }
 
 /// generated route for
-/// [_i3.ProductDetailsPage]
+/// [_i4.ProductDetailsPage]
 class ProductDetailsPageRoute
-    extends _i7.PageRouteInfo<ProductDetailsPageRouteArgs> {
+    extends _i8.PageRouteInfo<ProductDetailsPageRouteArgs> {
   ProductDetailsPageRoute({
-    _i8.Key? key,
-    required _i10.Product product,
+    _i9.Key? key,
+    required _i11.Product product,
   }) : super(
           ProductDetailsPageRoute.name,
           path: '/product-details-page',
@@ -208,9 +232,9 @@ class ProductDetailsPageRouteArgs {
     required this.product,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i10.Product product;
+  final _i11.Product product;
 
   @override
   String toString() {
@@ -219,8 +243,8 @@ class ProductDetailsPageRouteArgs {
 }
 
 /// generated route for
-/// [_i4.CartPage]
-class CartPageRoute extends _i7.PageRouteInfo<void> {
+/// [_i5.CartPage]
+class CartPageRoute extends _i8.PageRouteInfo<void> {
   const CartPageRoute()
       : super(
           CartPageRoute.name,
@@ -231,12 +255,12 @@ class CartPageRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ProductReviewListingPage]
+/// [_i6.ProductReviewListingPage]
 class ProductReviewListingPageRoute
-    extends _i7.PageRouteInfo<ProductReviewListingPageRouteArgs> {
+    extends _i8.PageRouteInfo<ProductReviewListingPageRouteArgs> {
   ProductReviewListingPageRoute({
-    _i8.Key? key,
-    required _i10.Product product,
+    _i9.Key? key,
+    required _i11.Product product,
   }) : super(
           ProductReviewListingPageRoute.name,
           path: '/product-review-listing-page',
@@ -255,9 +279,9 @@ class ProductReviewListingPageRouteArgs {
     required this.product,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i10.Product product;
+  final _i11.Product product;
 
   @override
   String toString() {
@@ -266,12 +290,12 @@ class ProductReviewListingPageRouteArgs {
 }
 
 /// generated route for
-/// [_i6.OrderSummaryPage]
+/// [_i7.OrderSummaryPage]
 class OrderSummaryPageRoute
-    extends _i7.PageRouteInfo<OrderSummaryPageRouteArgs> {
+    extends _i8.PageRouteInfo<OrderSummaryPageRouteArgs> {
   OrderSummaryPageRoute({
-    _i8.Key? key,
-    required List<_i11.CartItem> carts,
+    _i9.Key? key,
+    required List<_i12.CartItem> carts,
   }) : super(
           OrderSummaryPageRoute.name,
           path: '/order-summary-page',
@@ -290,9 +314,9 @@ class OrderSummaryPageRouteArgs {
     required this.carts,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final List<_i11.CartItem> carts;
+  final List<_i12.CartItem> carts;
 
   @override
   String toString() {

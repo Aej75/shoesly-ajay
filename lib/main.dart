@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:code_test/config/app_theme.dart';
 import 'package:code_test/core/injection/injection.dart';
 import 'package:code_test/core/routes/app_router.gr.dart';
-import 'package:code_test/core/utils/notification/notification_service.dart';
 import 'package:code_test/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -27,10 +26,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
   await configureInjection();
-
-  // await getIt<DataPopulation>().seed();
+  // await getIt<DataPopulation>().populate();
 
   runApp(
     BlocProvider(

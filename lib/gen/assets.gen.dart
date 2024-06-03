@@ -35,6 +35,10 @@ class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const AssetGenImage splash = AssetGenImage('assets/splash.gif');
+
+  /// List of all assets
+  static List<AssetGenImage> get values => [splash];
 }
 
 class AssetGenImage {

@@ -7,6 +7,7 @@ import 'package:code_test/features/cart/data/model/cart_item.dart';
 import 'package:code_test/features/cart/presentation/widget/cart_quantity_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:master_ui_collection/core/widgets/skeleton/master_skeleton.dart';
 
 class SingleCartItemView extends StatelessWidget {
   final CartItem cartItem;
@@ -19,6 +20,61 @@ class SingleCartItemView extends StatelessWidget {
       required this.cartItem,
       required this.onDelete,
       required this.onUpdate});
+
+  static Widget shimmer(context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const MasterSkeleton(
+            height: 80,
+            width: 80,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+              child: ColumnEachChildPadding(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.only(bottom: 06),
+            children: [
+              MasterSkeleton(
+                width: MediaQuery.sizeOf(context).width / 2,
+              ),
+              MasterSkeleton(
+                width: MediaQuery.sizeOf(context).width / 3,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MasterSkeleton(
+                    width: MediaQuery.sizeOf(context).width / 10,
+                  ),
+                  Row(
+                    children: [
+                      const MasterSkeleton(
+                        width: 25,
+                      ),
+                      horizontalSpacing(space: 15),
+                      const MasterSkeleton(
+                        width: 25,
+                      ),
+                      horizontalSpacing(space: 15),
+                      const MasterSkeleton(
+                        width: 25,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ))
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
